@@ -168,6 +168,7 @@ if not st.session_state.expenses.empty:
     display_df = st.session_state.expenses.sort_values(by='Date', ascending=False)
     
     # Date column ko sirf Date dikhane ke liye format karna (Time hata dena)
+    display_df['Date'] = pd.to_datetime(display_df['Date'])
     display_df['Date'] = display_df['Date'].dt.date
     
     st.dataframe(display_df, use_container_width=True)
